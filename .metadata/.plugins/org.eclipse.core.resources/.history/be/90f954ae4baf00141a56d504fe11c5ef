@@ -1,0 +1,19 @@
+import robotgrid.Grid;
+import robotgrid.GridServer;
+import robotgrid.Heading;
+import robotgrid.Robot;
+import robotgrid.Utils;
+
+public class Test
+{
+	
+	public static void main(String[] args)
+	{
+		GridServer server = new GridServer();
+		Grid grid = server.createGrid("Test",  10, 10 );
+		Robot robot1 = new Robot("Robot 1", Heading.East);
+		grid.placeObject(robot1, 0, 0);
+		// pause a bit before things start to happen
+		Utils.sleep(500);
+	}
+}

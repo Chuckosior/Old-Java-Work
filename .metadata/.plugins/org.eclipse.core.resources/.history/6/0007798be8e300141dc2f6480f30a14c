@@ -1,0 +1,37 @@
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+
+public class Square implements Shape
+{
+	private Color _color;
+	private Color[] colors = new Color[]{Color.GREEN,Color.RED,Color.BLUE,Color.BLACK};
+	private int _x, _y, _size;
+	int colorsIndex = 0;
+	public Square(int x, int y, int size)
+	{
+		_x = x;
+		_y = y;
+		_size = size;
+	}
+	@Override
+	public void paint(Graphics g)
+	{
+		g.setColor(_color);
+		g.drawRect(_x, _y, _size, _size);
+	}
+	@Override
+	public void mousePressed(MouseEvent mev)
+	{
+		_color=colors[colorsIndex];
+		colorsIndex++;
+		if(colorsIndex == colors.length)
+			colorsIndex=0;
+	}	 
+	@Override
+	public boolean contains(Point p)
+	{
+		return p.x >= _x && p.x < _x+_size && p.y >= _y && p.y < _y+_size;
+	}
+}

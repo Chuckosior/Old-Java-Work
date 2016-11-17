@@ -1,0 +1,35 @@
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.JPanel;
+import javax.swing.Timer;
+public class DrawingPanel extends JPanel implements ActionListener
+{
+	private ArrayList<Shape> _shapes = new ArrayList<Shape>();
+	private static final long serialVersionUID = 1L;
+	@Override
+	public void paint(Graphics g)
+	{
+	 super.paint(g);
+	 for(Shape shape: _shapes)
+	 shape.paint(g);
+	}
+	public void addShape(Shape shape)
+	{
+		_shapes.add(shape);
+	}
+	public DrawingPanel()
+	{
+		this.setBackground(Color.WHITE);
+		Timer timer = new Timer(20, this);
+		timer.start();
+	}
+	@Override
+	public void actionPerformed(ActionEvent aev)
+	{
+		this.repaint();
+	}
+}

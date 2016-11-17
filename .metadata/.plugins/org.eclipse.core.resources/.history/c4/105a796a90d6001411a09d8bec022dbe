@@ -1,0 +1,27 @@
+import java.io.File;
+
+import jeff.imagewindow.ImageWindow;
+import jeff.textconsole.TextConsole;
+
+// Project 4: Agents and Spaces
+// CSE1102 Spring 2015
+// (your name goes here)
+// (the current date goes here)
+// TA: (your TA's name goes here)
+// Section: (your section number goes here)
+// Instructor: Jeffrey A. Meunier
+
+public class Main {
+	public static void main(String[] args) {
+		//given to us by Jeff
+		 TextConsole console = TextConsole.create();
+		 ImageWindow imageWindow = new ImageWindow();
+		 File configFile = new File("data", "config.ini");
+		 ConfigLoader cl = new ConfigLoader(configFile);
+		 Agent a = cl.buildAll();
+		 CommandInterpreter.run(a, imageWindow, console);
+		//Run the Program
+		//CommandInterpreter.run(student, w1, t1); 
+	}
+}
+

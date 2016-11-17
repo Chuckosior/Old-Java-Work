@@ -1,0 +1,135 @@
+package linkedlist;
+
+// Class to represent a LinkedList<T>
+//   (Uses Node<T>)
+public class LinkedList<T> {
+
+	// Private head of list (starts out null)
+	private Node<T> head = null;
+	// Private count of items
+	private int length = 0;
+	
+	// Constructor to create Linked List
+	public LinkedList() {
+		// Put constructor code here!
+		head = new Node(null);
+		this.length = length;
+		Node<T> p = null;
+	}
+
+	// Method to return boolean (true if list is empty)
+	public boolean isEmpty() {
+		return (head == null);
+	}
+
+	// Get the number of items in the list
+	public int size() {
+		return(length);
+	}
+
+	// Clear the list of all items
+	public void clear() {
+		head = null;
+		length = 0;
+	}
+
+	// Method to get an item at a position in the list
+
+	//
+	public T get(int pos) {
+		if (length < pos || pos <= 0)
+			return null;
+		else {
+			Node<T> p = head;
+			for (int i = 1; i < pos; i++)
+				p = p.getNext();
+			return p.getData();
+		}
+	}
+	//	
+	//	// Method to get a node containing an item
+	//	public Node<T> get2(T data) {
+	//		Node<T> ret = null;
+	//		Node<T> p = head;
+	//		while (p != null && !p.getData().equals(data))
+	//			p = p.getNext();
+	//		if (p != null)
+	//			ret = p;
+	//		return ret;
+	//	}
+
+	/*
+	 * Methods of ADT List to implement
+	 * 
+	 * +Create
+	 * +isEmpty
+	 * +Size
+	 * +Get
+	 * +Clear
+	 * Add
+	 * Remove
+	 * 
+	 * Other ideas:
+	 * 
+	 * Contains
+	 * toString
+	 */
+
+	public boolean add(T item, int pos) {
+		Node p = head;
+		if(pos > (length+1)){
+			return false;
+		}
+		else if(pos == 1){
+			head = new Node(item,head);	
+		}
+		else
+			
+		for ( int i = 0; i < (pos-2); i++) {
+			p.setNext(new Node(item,p.getNext));
+		}
+return true;
+	}
+
+	public boolean remove(T item){
+		return true;
+	}
+
+	public String toString() {
+		return("["+.toString()+"]");
+	}
+
+	public boolean contains(T item) {
+		boolean foundIt = false;
+		if(size() == 0)  {
+			 return false;
+		}
+		Node<T> current = head.getNext();	
+		for ( int i = 0 ; i < length; i++) {
+			if (current.equals(item)) {
+				foundIt = true;
+			}
+			current = current.getNext();
+		}
+		return foundIt;
+	}
+
+	//main method
+	public static void main(String[] args) {
+
+		LinkedList<Integer> lst = new LinkedList<Integer>();
+
+		for (int i = 1; i <= 10; i++) lst.add(i,i);
+
+		System.out.println(lst); // Should print out "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+		System.out.println(lst.size()); // Should print out "10"
+		lst.remove(6);
+		System.out.println(lst); // Should print out "[1, 2, 3, 4, 5, 7, 8, 9, 10]"
+		lst.add(99,4);
+		System.out.println(lst); // Should print out "[1, 2, 3, 99, 4, 5, 7, 8, 9, 10]"
+		System.out.println(lst.get(2)); // Should print "2"
+		System.out.println(lst.remove(72)); // Should print "false"
+		lst.clear();
+		System.out.println(lst.size()); // Should print out 0	
+	}
+}

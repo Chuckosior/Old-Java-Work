@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;sortedLinkedList&apos; to &apos;SortedList&apos;&#x0D;&#x0A;- Original project: &apos;SortedLinkedList&apos;&#x0D;&#x0A;- Original element: &apos;sortedLinkedList&apos;&#x0D;&#x0A;- Renamed element: &apos;SortedList&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;sortedLinkedList&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{sortedLinkedList.java[sortedLinkedList" matchStrategy="1" name="SortedList" qualified="false" references="true" similarDeclarations="false" stamp="1462203730879" textual="false" version="1.0"/>
+</session>

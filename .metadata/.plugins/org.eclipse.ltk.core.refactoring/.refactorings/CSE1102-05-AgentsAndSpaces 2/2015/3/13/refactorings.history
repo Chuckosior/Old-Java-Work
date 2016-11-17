@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 5 elements from project &apos;CSE1102-05-AgentsAndSpaces 2&apos;&#x0D;&#x0A;- Original project: &apos;CSE1102-05-AgentsAndSpaces 2&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     Agent.java&#x0D;&#x0A;     CommandInterpreter.java&#x0D;&#x0A;     Main.java&#x0D;&#x0A;     Portal.java&#x0D;&#x0A;     Space.java" description="Delete elements" element1="/src&lt;{CommandInterpreter.java" element2="/src&lt;{Agent.java" element3="/src&lt;{Space.java" element4="/src&lt;{Main.java" element5="/src&lt;{Portal.java" elements="5" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1427246821969" subPackages="false" version="1.0"/>
+</session>

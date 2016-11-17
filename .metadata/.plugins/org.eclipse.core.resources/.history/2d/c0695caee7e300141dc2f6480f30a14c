@@ -1,0 +1,14 @@
+import java.awt.Color;
+
+import javax.swing.Timer;
+
+
+public class FlashingSquare extends Square {
+
+	public FlashingSquare(int x, int y, int size) {
+		super(x, y, size);
+		Timer timer = new Timer(500, null);
+		timer.start();
+	}
+
+}

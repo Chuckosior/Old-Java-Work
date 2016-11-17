@@ -1,0 +1,29 @@
+//variables that remove walls North south east and west
+
+public int nsew = 0;	//0000
+public int sew = 1; //0001
+public int new = 2; //0010
+public int ew = 3; //0011
+public int nsw = 4; //0100
+public int sw = 5; //0101
+public int nw = 6; //0110
+public int w = 7; //0111
+public int nse = 8; //1000
+public int se = 9; //1001
+public int ne = 10; //1010
+public int e = 11; //1011
+public int ns = 12; //1100
+public int s = 13; //1101
+public int n = 14; //1110;
+public int allWall = 15; //1111
+
+//8421
+//WESN
+
+//remove 8 from value 15 will always take out W
+
+//you never go into a room unless there are three walls in it after you break into it
+//if the room you enter has three walls, and you check the surrounding rooms, and they 
+//have two open walls already, backtrack and try a different direction in the previous room.
+//^^^^^^^^^^^^^^^^^
+//this is recursive

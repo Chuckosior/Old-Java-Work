@@ -1,0 +1,23 @@
+//Agents and Spaces
+//CSE1102 Project 04, Spring Semester 2015
+//Chris Kosior
+//2/22/15
+//Yusuf Albayram
+//Section 12
+public class Main {
+	public static void main(String[] args) {
+		{
+			Space dungeon = new Space("in a dungeon", "and see a field to the north...sweet freedom from this duneon...", null, null);
+			Space north = new Space("north","norther...maybe there's some candy that way", null, null);
+			Space norther = new Space("norther","over the edge of a cliff, signifying your journey is over", null, null);
+			Portal gate = new Portal("gate","a gate used to go north", north);
+			Portal bridge = new Portal("bridge","a bridged used to reach the northest of north", norther);
+			Agent dungeonMan = new Agent();
+			dungeonMan.setName("North Quest: The northening");
+			dungeonMan.setLocation(dungeon);
+			CommandInterpreter.run(dungeonMan);
+		}
+	}
+}
+
+

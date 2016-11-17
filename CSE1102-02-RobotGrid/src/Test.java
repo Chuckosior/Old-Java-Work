@@ -1,0 +1,120 @@
+// Project 2: Robot Grid
+// CSE1102 Spring 2015
+// Christopher Kosior (2034964)
+// 2/7/2015
+// TA: Yusuf Albayram
+// Section: 12
+// Instructor: Jeffrey A. Meunier
+import robotgrid.Grid;
+import robotgrid.GridServer;
+import robotgrid.Heading;
+import robotgrid.Layer;
+import robotgrid.Robot;
+import robotgrid.TriggerCell;
+import robotgrid.Utils;
+import robotgrid.Wall;
+
+public class Test
+{
+	
+	public static void main(String[] args)
+	{
+		GridServer server = new GridServer();
+		Grid grid = server.createGrid("Test",  10, 10 );
+		Robot robot1 = new Robot("Robot 1", Heading.East);
+		setup(grid);
+		grid.placeObject(robot1, 0, 0);
+		// pause a bit before things start to happen
+		Utils.sleep(500);
+		robot1.move();
+		robot1.turnRight();
+		int loopVar = 0;
+		while(loopVar < 9) {
+			robot1.move();
+			loopVar++;
+				}
+		loopVar = 0;
+		while(loopVar < 2) {
+			robot1.turnLeft();
+			loopVar++;
+		}
+		loopVar = 0;
+		while(loopVar < 4) {
+			robot1.move();
+			loopVar++;
+		}
+		robot1.turnRight();
+		loopVar = 0;
+		while(loopVar < 3) {
+			robot1.move();
+			loopVar++;
+		}
+		robot1.turnRight();
+		loopVar = 0;
+		while(loopVar < 2) {
+			robot1.move();
+			loopVar++;
+		}
+		loopVar = 0;
+		while(loopVar < 2) {
+			robot1.turnLeft();
+			loopVar++;
+		}
+		loopVar = 0;
+		while(loopVar < 4) {
+			robot1.move();
+			loopVar++;
+		}
+		robot1.turnRight();
+		robot1.move();
+		robot1.turnRight();
+		loopVar = 0;
+		while(loopVar < 2) {
+			robot1.move();
+			loopVar++;
+		}
+		robot1.turnLeft();
+		loopVar = 0;
+		while(loopVar < 4) {
+			robot1.move();
+			loopVar++;
+		}
+		robot1.turnRight();
+		loopVar = 0;
+		while(loopVar < 4) {
+			robot1.move();
+			loopVar++;
+		}
+	}
+	
+	private static void setup(final Grid grid)
+	{
+		for(int n=0; n<10; n++)
+		{
+			Wall wall = new Wall();
+			grid.placeObject(wall, 3, n);
+			grid.placeObject(wall, 6, n);
+		}
+		Layer layer = grid.getLayer(null);
+		TriggerCell tc1 = new TriggerCell(layer, 1, 9, "") {
+			@Override
+			public void activate()
+			{
+				grid.removeObject(3, 5);
+			}
+		};
+		TriggerCell tc2 = new TriggerCell(layer, 4, 7, "") {
+			@Override
+			public void activate()
+			{
+				grid.removeObject(6, 5);
+			}
+		};
+		layer.setCell(1, 9, tc1);
+		layer.setCell(4, 7, tc2);
+		TriggerCell tc3 = new TriggerCell(layer, 5, 3, "Checkpoint");
+		layer.setCell(5, 3, tc3);
+		TriggerCell tc4 = new TriggerCell(layer, 9, 9, "Finished!");
+		layer.setCell(9, 9, tc4);
+	}
+}

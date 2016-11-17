@@ -1,0 +1,83 @@
+package maze;
+
+import java.util.ArrayList;
+
+import stack.*;
+
+public class MazeBuilderStack extends MazeBuilderGeneric {
+
+	// Internal stack
+	private StackInterface<int[]> stack = null;
+
+	// Create the maze builder
+	public MazeBuilderStack(int h, int w) {
+		stack = new StackDynamic<int[]>();
+		height = h;
+		width = w;
+		init();
+	}
+
+	@Override
+	public void buildMaze() {
+		// Set start of maze
+		start = new int[2];
+		start[0] = (int) (Math.random() * height);
+		start[1] = (int) (Math.random() * width);
+		visited[start[0]][start[1]] = true;
+		try {
+			// Push starting moves onto stack
+			ArrayList<Integer> dirs = getPermutation();
+			while (!dirs.isEmpty()) {
+				int val = dirs.remove(0);
+				int[] newPos = { start[0] + adds[val][0], start[1] + adds[val][1] };
+				// Stack holds 5-element int arrays (fromR, fromC, toR, toC, dir)
+				if (isLegal(newPos)) {
+					int[] toPush = new int[5];
+					toPush[0] = start[0];
+					toPush[1] = start[1];
+					toPush[2] = newPos[0];
+					toPush[3] = newPos[1];
+					toPush[4] = val;
+					stack.push(toPush);
+				}
+			}
+
+			// Keep processing until there are no more elements in the stack
+			while (!stack.isEmpty()) {
+				// Get top of stack
+				int[] cur = stack.pop();
+				int[] from = new int[2];
+				int[] to = new int[2];
+				from[0] = cur[0];
+				from[1] = cur[1];
+				to[0] = cur[2];
+				to[1] = cur[3];
+				// If move is (still) legal
+				if (isLegal(to)) {
+					// Make move
+					walls[from[0]][from[1]] &= fromMask[cur[4]];
+					walls[to[0]][to[1]] &= toMask[cur[4]];
+					visited[to[0]][to[1]] = true;
+					// Push all new legal moves onto stack
+					dirs = getPermutation();
+					while (!dirs.isEmpty()) {
+						int val = dirs.remove(0);
+						int[] newPos = { to[0] + adds[val][0], to[1] + adds[val][1] };
+						if (isLegal(newPos)) {
+							int[] toPush = new int[5];
+							toPush[0] = to[0];
+							toPush[1] = to[1];
+							toPush[2] = newPos[0];
+							toPush[3] = newPos[1];
+							toPush[4] = val;
+							stack.push(toPush);
+						}
+					}
+
+				}
+			}
+		} catch (StackSizeException e) {
+			System.out.println("STACK SIZE PROBLEMS!");
+		}
+	}
+}

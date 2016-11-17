@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;ret&apos; in &apos;linkedlist.LinkedList.remove(...)&apos; to &apos;b&apos;&#x0D;&#x0A;- Original project: &apos;CSC111&apos;&#x0D;&#x0A;- Original element: &apos;linkedlist.LinkedList.remove(T).ret&apos;&#x0D;&#x0A;- Renamed element: &apos;ret&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;ret&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;linkedlist{LinkedList.java[LinkedList~remove~QT;@ret!1701!1720!1709!1711!Z!0!false" name="b" references="true" stamp="1459536607576" version="1.0"/>
+</session>
